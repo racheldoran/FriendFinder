@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder Survey</title>
+
+  <!-- SCRIPTS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body> 
+<div class = "container">
+	 <div class="page-header">
+       <h1><span class="glyphicon glyphicon-list-alt"></span> Friend Finder</h1>
+      </div>
+
+        <div class="panel panel-default">
+        
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong></strong></h3>
+        </div>
+        
+        <div class="panel-body">
+          <h4>Enter your Name</h4>
+          <div class="input-group">
+            <!-- Form -->
+            <input id = "formName" class="form-control" type="text" name="name">
+         
+          </div>  
+          <br>
+        
+      
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Answer these questions to help find you a friend!</strong></h3>
+        </div>
+        <div class="panel-body">
+       
+          <h4><strong>Question One:</strong></h4>
+          <h5>Do you like to cook?</h5>
+          <select data-placeholder="" class="select" id="one">
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+            <option value="3">Sometimes</option>
+          </select>
+         
+          <h4><strong>Question Two:</strong></h4>
+          <h5>Do you like animals?</h5>
+          <select data-placeholder="" class="select" id="two">
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+            <option value="3">Sometimes</option>
+          </select>
+
+   
+          <h4><strong>Question Three:</strong></h4>
+          <h5>Do you any pets?</h5>
+          <select data-placeholder="" class="select" id="three">
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+            <option value="3">I freaking wish</option>
+          </select>
+
+          
+          <h4><strong>Question Four:</strong></h4>
+          <h5>Do you like music?</h5>
+          <select data-placeholder="" class="select" id="four">
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+            <option value="3">Sometimes</option>
+          </select>
+
+         
+          <h4><strong>Question Five:</strong></h4>
+          <h5>Do you drink coffee?</h5>
+          <select data-placeholder="" class="select" id="five">
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+            <option value="3">Sometimes</option>
+          </select>
+
+        </div>
+      </div>
+      
+      <button id="submitButton" type="submit" class="btn btn-lg btn-primary btn-block"><h4>Submit</h4></button> 
+  
+      <br>
+
+    
+      <div id="results"  role="dialog">
+          
+          <div class="modal-content">
+          
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+               
+              <h2 class="modal-title"><strong>Meet your friend!!!</strong></h2>
+            </div>
+
+            
+            <div class="modal-body">
+               
+              <h2 id="matchedName"></h2>
+              <img id="matchedImage" src="" alt="">
+            </div>
+
+             
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>	
+
+    <script type="text/javascript">
+     
+    $(document).ready(function() {
+    $("#submitButton").on("click", function() {
+         
+        function newForm() {
+            
+            var completeForm = true;
+            $(".form-control").each(function() {
+                if ($(this).val() === ""){
+                    completeForm = false;
+                }
+            });
+            $(".select").each(function() {
+                if ($(this).val() === ""){
+                    completeForm = false;
+                }
+            });
+            return completeForm;
+        }
+         
+        if (newForm() == true) {
+             
+            var friend = {
+                name: $("#formName").val().trim(),
+                profilePic: $("#formImage").val().trim(),
+                scores: [
+                    $('#one').val(),
+                    $('#two').val(),
+                    $('#three').val(),
+                    $('#four').val(),
+                    $('#five').val(),
+                ]
+            };
+             
+            var pickles = window.location.origin;
+             
+            $.post(pickles + "/api/friends", friend, function(data) {
+                
+                $("#matchedName").text(data.name);
+                $("#matchedImage").attr("src", data.photo);
+                $("#results").modal("toggle");
+            });
+            
+            $('#formName').val("");
+            $('#formImage').val("");
+            $('#one').val("");
+            $('#two').val("");
+            $('#three').val("");
+            $('#four').val("");
+            $('#five').val("");
+           
+        } else {
+            alert("Please fill out all fields!")
+        }
+        
+    });
+});
+</script>
+
+
+
+
+</body>
+
+</html>
