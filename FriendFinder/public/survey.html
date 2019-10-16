@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Friend Finder Survey</title>
+  <title>Friend Finder</title>
 
   <!-- SCRIPTS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -13,11 +13,10 @@
 <body> 
 <div class = "container">
 	 <div class="page-header">
-       <h1><span class="glyphicon glyphicon-list-alt"></span> Friend Finder</h1>
+       <h1><span class="glyphicon glyphicon-list-alt"></span>Friend Finder</h1>
       </div>
 
         <div class="panel panel-default">
-        
         <div class="panel-heading">
           <h3 class="panel-title"><strong></strong></h3>
         </div>
@@ -27,7 +26,6 @@
           <div class="input-group">
             <!-- Form -->
             <input id = "formName" class="form-control" type="text" name="name">
-         
           </div>  
           <br>
         
@@ -86,34 +84,20 @@
       </div>
       
       <button id="submitButton" type="submit" class="btn btn-lg btn-primary btn-block"><h4>Submit</h4></button> 
-  
-      <br>
-
-    
       <div id="results"  role="dialog">
-          
           <div class="modal-content">
-          
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-               
               <h2 class="modal-title"><strong>Meet your friend!!!</strong></h2>
             </div>
-
-            
             <div class="modal-body">
-               
               <h2 id="matchedName"></h2>
               <img id="matchedImage" src="" alt="">
             </div>
-
-             
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
-
           </div>
-
         </div>
       </div>
     </div>	
@@ -123,27 +107,27 @@
     $(document).ready(function() {
     $("#submitButton").on("click", function() {
          
-        function newForm() {
+        function form() {
             
-            var completeForm = true;
+            var complete = true;
             $(".form-control").each(function() {
                 if ($(this).val() === ""){
-                    completeForm = false;
+                    complete = false;
                 }
             });
             $(".select").each(function() {
                 if ($(this).val() === ""){
-                    completeForm = false;
+                    complete = false;
                 }
             });
-            return completeForm;
+            return complete;
         }
          
-        if (newForm() == true) {
+        if (form() == true) {
              
             var friend = {
                 name: $("#formName").val().trim(),
-                profilePic: $("#formImage").val().trim(),
+                picture: $("#formImage").val().trim(),
                 scores: [
                     $('#one').val(),
                     $('#two').val(),
@@ -177,10 +161,5 @@
     });
 });
 </script>
-
-
-
-
 </body>
-
 </html>
