@@ -13,10 +13,8 @@ module.exports = function (app) {
 
     for (var i = 0; i < bestFriend.scores.length; i++) {
       if (bestFriend.scores[i] == "Yes") {
-
         bestFriend.scores[i] = 1;
       } else if (bestFriend.scores[i] == "No") {
-
         bestFriend.scores[i] = 3;
       } else {
 
@@ -24,22 +22,18 @@ module.exports = function (app) {
       }
     }
 
-
     var newArray = [];
 
     for (var i = 0; i < friends.length; i++) {
-
       var comparison = friends[i];
-
-      var totalDifference = 0;
+      var total = 0;
 
       for (var i = 0; i < comparison.scores.length; i++) {
-
         var difference = Math.abs(comparison.scores[i] - bestFriend.scores[i]);
-        totalDifference += difference;
+        total += difference;
       }
 
-      newArray[i] = totalDifference;
+      newArray[i] = total;
     }
 
     var friendNumber = newArray[0];
@@ -53,7 +47,6 @@ module.exports = function (app) {
     }
 
     friends.push(bestFriend);
-
     res.json(friends[newFriend]);
   });
 };
