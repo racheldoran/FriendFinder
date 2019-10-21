@@ -10,8 +10,6 @@ module.exports = function (app) {
   });
 
   app.post('/api/friends', function (req, res) {
-
-
     var bestFriend = req.body;
 
     for (var i = 0; i < bestFriend.scores.length; i++) {
@@ -35,7 +33,6 @@ module.exports = function (app) {
         var difference = Math.abs(comparison.scores[i] - bestFriend.scores[i]);
         total += difference;
       }
-
       newArray[i] = total;
     }
 
