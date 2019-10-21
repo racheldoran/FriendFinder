@@ -25,6 +25,6 @@
 		scores: [4,3,5,2,2,1,3,4,2,1]
 	}
 ];
-
+}
 module.exports = friends;
   
