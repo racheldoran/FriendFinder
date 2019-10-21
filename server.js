@@ -9,8 +9,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 
-require("routing/apiRoutes.js")(app);
-require("routing/htmlRoutes.js")(app);
+require("./FriendFinder/routing/apiRoutes.js")(app);
+require("./FriendFinder/routing/htmlRoutes.js")(app);
 
 
 app.listen(PORT, function() {

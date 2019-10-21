@@ -1,4 +1,7 @@
-var friends = require('../data/friends.js');
+var friends = require('./FriendFinder/app/data/friends.js');
+
+
+// ./FriendFinder/routing/apiRoutes.js
 
 module.exports = function (app) {
 
