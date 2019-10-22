@@ -7,7 +7,8 @@
   <!--Scripts-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <title>Friend Finder</title>
@@ -17,14 +18,15 @@
   <div class='container'>
 
     <h4><strong>Survey Questions</strong></h4>
-    <div class='card-panel teal lighten-2'>
+    <div class='card-panel blue-grey darken-2'>
       <h5><strong>Answer these questions and we will find you a buddy</strong></h5>
       <br>
       <input id="name" type="text" class="validate" required>
-      <label class='active' for="name"><span class="black-text text-darken-2">Name</label></span>
+      <h2></h2><label class='' for="name"><span class="black-text text-darken-2"><strong>Name</strong></label></span>
+      </h2>
 
       <h5><strong>Question One:</strong></h5>
-      <p>I really like animals.</p>
+      <p>I really like animals</p>
       <select data-placeholder="" class="browser-default" id="one">
         <option value="">Choose an option</option>
         <option value="1">1</option>
@@ -34,7 +36,7 @@
         <option value="5">5</option>
       </select>
       <h5><strong>Question Two:</strong></h5>
-      <p>I'm a coffee drinker.</p>
+      <p>I'm a coffee drinker</p>
       <select data-placeholder="" class="browser-default" id="two">
         <option value="">Choose an option</option>
         <option value="1">1</option>
@@ -44,7 +46,7 @@
         <option value="5">5</option>
       </select>
       <h5><strong>Question Three:</strong></h5>
-      <p>I'm a great cook.</p>
+      <p>I'm a great cook</p>
       <select data-placeholder="" class="browser-default" id="three">
         <option value="">Choose an option</option>
         <option value="1">1</option>
@@ -54,7 +56,7 @@
         <option value="5">5</option>
       </select>
       <h5><strong>Question Four:</strong></h5>
-      <p>I am very out going.</p>
+      <p>I am very out going</p>
       <select data-placeholder="" class="browser-default" id="four">
         <option value="">Choose an option</option>
         <option value="1">1</option>
@@ -64,7 +66,7 @@
         <option value="5">5</option>
       </select>
       <h5><strong>Question Five:</strong></h5>
-      <p>I like cars.</p>
+      <p>I like cars</p>
       <select data-placeholder="" class="browser-default" id="five">
         <option value="">Choose an option</option>
         <option value="1">1</option>
@@ -76,7 +78,7 @@
 
 
       <button type="submit" data-target="modal1" class="waves-effect waves-light btn modal-trigger pink lighten-1"
-        id="submitBtn">Submit</button>
+        id="submitButt">Submit</button>
     </div>
   </div>
 
@@ -87,7 +89,7 @@
       <img id="matchPhoto" src="">
     </div>
     <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-black btn-flat">Done</a>
+      <a href="" class=" modal-action modal-close waves-effect waves-black btn-flat">Done</a>
     </div>
   </div>
 
@@ -96,7 +98,7 @@
 
   <script type="text/javascript">
     $(document).ready(function () {
-      $("#submitBtn").on("click", function () {
+      $("#submitButt").on("click", function () {
 
         function validateForm() {
           var isValid = true;
@@ -129,7 +131,6 @@
           };
 
           var currentURL = window.location.origin;
-
           $.post(currentURL + "/api/friends", newFriend, function (data) {
 
             $("#matchName").text(data.name);
@@ -137,7 +138,6 @@
           });
 
           $('.modal').modal();
-
           $('#name').val("");
           $('#photo').val("");
           $('#one').val("");
