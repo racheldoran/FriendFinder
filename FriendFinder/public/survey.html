@@ -1,165 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+<html>
+
 <head>
   <meta charset="UTF-8">
+  <!--Scripts-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <title>Friend Finder</title>
-
-  <!-- SCRIPTS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 </head>
-<body> 
-<div class = "container">
-	 <div class="page-header">
-       <h1><span class=""></span>Friend Finder</h1>
-      </div>
 
-        <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><strong></strong></h3>
-        </div>
-        
-        <div class="panel-body">
-          <h4>Enter your Name</h4>
-          <div class="input-group">
-            <!-- Form -->
-            <input id = "formName" class="form-control" type="text" name="name">
-          </div>  
-          <br>
-        
-      
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><strong>Answer these questions to help find you a friend!</strong></h3>
-        </div>
-        <div class="panel-body">
-       
-          <h4><strong>Question One:</strong></h4>
-          <h5>Do you like to cook?</h5>
-          <select data-placeholder="" class="select" id="one">
-            <option value="1">Yes</option>
-            <option value="2">No</option>
-            <option value="3">Sometimes</option>
-          </select>
-         
-          <h4><strong>Question Two:</strong></h4>
-          <h5>Do you like animals?</h5>
-          <select data-placeholder="" class="select" id="two">
-            <option value="1">Yes</option>
-            <option value="2">No</option>
-            <option value="3">Sometimes</option>
-          </select>
+<body>
+  <div class='container'>
 
-   
-          <h4><strong>Question Three:</strong></h4>
-          <h5>Do you any pets?</h5>
-          <select data-placeholder="" class="select" id="three">
-            <option value="1">Yes</option>
-            <option value="2">No</option>
-            <option value="3">I freaking wish</option>
-          </select>
+    <h4><strong>Survey Questions</strong></h4>
+    <div class='card-panel teal lighten-2'>
+      <h5><strong>Answer these questions and we will find you a buddy</strong></h5>
+      <br>
+      <input id="name" type="text" class="validate" required>
+      <label class='active' for="name"><span class="black-text text-darken-2">Name</label></span>
 
-          
-          <h4><strong>Question Four:</strong></h4>
-          <h5>Do you like music?</h5>
-          <select data-placeholder="" class="select" id="four">
-            <option value="1">Yes</option>
-            <option value="2">No</option>
-            <option value="3">Sometimes</option>
-          </select>
+      <h5><strong>Question One:</strong></h5>
+      <p>I really like animals.</p>
+      <select data-placeholder="" class="browser-default" id="one">
+        <option value="">Choose an option</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <h5><strong>Question Two:</strong></h5>
+      <p>I'm a coffee drinker.</p>
+      <select data-placeholder="" class="browser-default" id="two">
+        <option value="">Choose an option</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <h5><strong>Question Three:</strong></h5>
+      <p>I'm a great cook.</p>
+      <select data-placeholder="" class="browser-default" id="three">
+        <option value="">Choose an option</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <h5><strong>Question Four:</strong></h5>
+      <p>I am very out going.</p>
+      <select data-placeholder="" class="browser-default" id="four">
+        <option value="">Choose an option</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <h5><strong>Question Five:</strong></h5>
+      <p>I like cars.</p>
+      <select data-placeholder="" class="browser-default" id="five">
+        <option value="">Choose an option</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
 
-         
-          <h4><strong>Question Five:</strong></h4>
-          <h5>Do you drink coffee?</h5>
-          <select data-placeholder="" class="select" id="five">
-            <option value="1">Yes</option>
-            <option value="2">No</option>
-            <option value="3">Sometimes</option>
-          </select>
 
-        </div>
-      </div>
-      
-      <button id="submitButton" type="submit" class="btn btn-lg btn-primary btn-block"><h4>Submit</h4></button> 
-      <div id="results"  role="dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h2 class="modal-title"><strong>Meet your friend!!!</strong></h2>
-            </div>
-            <div class="modal-body">
-              <h2 id="matchedName"></h2>
-              <img id="matchedImage" src="" alt="">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>	
+      <button type="submit" data-target="modal1" class="waves-effect waves-light btn modal-trigger pink lighten-1"
+        id="submitBtn">Submit</button>
+    </div>
+  </div>
 
-    <script type="text/javascript">
-     
-    $(document).ready(function() {
-    $("#submitButton").on("click", function() {
-         
-        function form() {
-            
-            var complete = true;
-            $(".form-control").each(function() {
-                if ($(this).val() === ""){
-                    complete = false;
-                }
-            });
-            $(".select").each(function() {
-                if ($(this).val() === ""){
-                    complete = false;
-                }
-            });
-            return complete;
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Meet your new friend!</h4>
+      <h5 id="matchName"></h5>
+      <img id="matchPhoto" src="">
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-black btn-flat">Done</a>
+    </div>
+  </div>
+
+  </div>
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#submitBtn").on("click", function () {
+
+        function validateForm() {
+          var isValid = true;
+          $('.validate').each(function () {
+            if ($(this).val() === '') {
+              isValid = false;
+            }
+          });
+          $('.browser-default').each(function () {
+            if ($(this).val() === "") {
+              isValid = false;
+            }
+          });
+          return isValid;
         }
-         
-        if (form() == true) {
-             
-            var friend = {
-                name: $("#formName").val().trim(),
-                picture: $("#formImage").val().trim(),
-                scores: [
-                    $('#one').val(),
-                    $('#two').val(),
-                    $('#three').val(),
-                    $('#four').val(),
-                    $('#five').val(),
-                ]
-            };
-             
-            var pickles = window.location.origin;
-             
-            $.post(pickles + "/api/friends", friend, function(data) {
-                
-                $("#matchedName").text(data.name);
-                $("#matchedImage").attr("src", data.photo);
-                $("#results").modal("toggle");
-            });
-            
-            $('#formName').val("");
-            $('#formImage').val("");
-            $('#one').val("");
-            $('#two').val("");
-            $('#three').val("");
-            $('#four').val("");
-            $('#five').val("");
-           
+
+        if (validateForm() == true) {
+
+          var newFriend = {
+            name: $('#name').val(),
+            photo: $('#photo').val(),
+            scores: [
+              $('#one').val(),
+              $('#two').val(),
+              $('three').val(),
+              $('#four').val(),
+              $('#five').val(),
+
+            ]
+          };
+
+          var currentURL = window.location.origin;
+
+          $.post(currentURL + "/api/friends", newFriend, function (data) {
+
+            $("#matchName").text(data.name);
+            $("#matchPhoto").attr("src", data.photo);
+          });
+
+          $('.modal').modal();
+
+          $('#name').val("");
+          $('#photo').val("");
+          $('#one').val("");
+          $('#two').val("");
+          $('#three').val("");
+          $('#four').val("");
+          $('#five').val("");
+
         } else {
-            alert("Please fill out all fields!")
+          alert("Please fill out all fields")
         }
-        
+
+      });
     });
-});
-</script>
+  </script>
 </body>
+
 </html>

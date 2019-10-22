@@ -1,52 +1,39 @@
-var friends = require('../app/data/friends.js');
 
+var friends = require('../app/data/friends');
 
-// ./FriendFinder/routing/apiRoutes.js
-
-module.exports = function (app) {
-
-  app.get('/api/friends', function (req, res) {
+module.exports = function(app){
+ 
+  app.get('/api/friends', function(req,res){
     res.json(friends);
   });
 
-  app.post('/api/friends', function (req, res) {
-    var bestFriend = req.body;
+  app.post('/api/friends', function(req,res){
+  
+    var friendScore = req.body.scores;
+    var friendArray = [];
+    var friendMatch = 0;
 
-    for (var i = 0; i < bestFriend.scores.length; i++) {
-      if (bestFriend.scores[i] == "Yes") {
-        bestFriend.scores[i] = 1;
-      } else if (bestFriend.scores[i] == "No") {
-        bestFriend.scores[i] = 3;
-      } else {
+    for(var i=0; i<friends.length; i++){
+      var scoresDiff = 0;
+      
+      for(var j=0; j<friendScore.length; j++){
+        scoresDiff += (Math.abs(parseInt(friends[i].scores[j]) - parseInt(friendScore[j])));
+      }
 
-        bestFriend.scores[i] = parseInt(bestFriend.scores[i]);
+    
+      friendArray.push(scoresDiff);
+    }
+
+    for(var i=0; i<friendArray.length; i++){
+      if(friendArray[i] <= friendArray[friendMatch]){
+        friendMatch = i;
       }
     }
 
-    var newArray = [];
 
-    for (var i = 0; i < friends.length; i++) {
-      var comparison = friends[i];
-      var total = 0;
+    var bff = friends[friendMatch];
+    res.json(bff);
 
-      for (var i = 0; i < comparison.scores.length; i++) {
-        var difference = Math.abs(comparison.scores[i] - bestFriend.scores[i]);
-        total += difference;
-      }
-      newArray[i] = total;
-    }
-
-    var friendNumber = newArray[0];
-    var newFriend = 0;
-
-    for (var i = 1; i < newArray.length; i++) {
-      if (newArray[i] < friendNumber) {
-        friendNumber = newArray[i];
-        newFriend = i;
-      }
-    }
-
-    friends.push(bestFriend);
-    res.json(friends[newFriend]);
+    friends.push(req.body);
   });
 };
